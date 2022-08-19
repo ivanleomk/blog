@@ -10,7 +10,7 @@ type HomeProps = {
   posts: githubPost[];
 };
 
-const Home: NextPage = ({ posts }) => {
+const Home = ({ posts }: HomeProps) => {
   return (
     <>
       <Head>

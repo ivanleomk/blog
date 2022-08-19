@@ -51,9 +51,11 @@ export default async function getAllPosts(): Promise<githubPost[]> {
         slug: slugify(item.title),
         //@ts-ignore
         labels: item.labels.nodes
+          //@ts-ignore
           .map((label) => {
             return label.name;
           })
+          //@ts-ignore
           .filter((label) => {
             return !EXCLUDED_LABELS.includes(label);
           }),
@@ -78,7 +80,8 @@ const getAuthor = () => {
   const allAuthors = getAllAuthors();
   const randomIndex = Math.floor(Math.random() * allAuthors.length);
   const randomKey = allAuthors[randomIndex] as string;
-  const chosenAuthor = authors[randomKey] as string;
+  //@ts-ignore
+  const chosenAuthor = authors[randomKey];
   return chosenAuthor;
 };
 

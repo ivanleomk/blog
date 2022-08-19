@@ -15,7 +15,9 @@ const FallbackURLs = [
 ];
 
 const generateRandomFallbackURL = () => {
-  return FallbackURLs[Math.floor(Math.random() * FallbackURLs.length)];
+  return FallbackURLs[
+    Math.floor(Math.random() * FallbackURLs.length)
+  ] as string;
 };
 
 const ArticleCard = ({ post }: ArticleCardProps) => {
@@ -25,11 +27,12 @@ const ArticleCard = ({ post }: ArticleCardProps) => {
     <Link href={`articles/${slug}`}>
       <div key={title} className="flex flex-col rounded-lg ">
         <div className="flex-shrink-0">
+          {/* //@ts-ignore */}
           <img
             className="rounded-lg w-full object-cover"
             src={
               attributes?.imageURL
-                ? attributes.imageURL
+                ? (attributes.imageURL as string)
                 : generateRandomFallbackURL()
             }
             alt="Image URL"
@@ -47,11 +50,11 @@ const ArticleCard = ({ post }: ArticleCardProps) => {
               })}
             </p>
 
-            <div href={post.href} className="block mt-2">
+            <div className="block mt-2">
               <p className="text-xl font-semibold text-gray-900">
                 {post.title}
               </p>
-              <p className="mt-3 text-base text-gray-500">{post.description}</p>
+              {/* <p className="mt-3 text-base text-gray-500">{post.description}</p> */}
             </div>
           </div>
           <div className="mt-6 flex items-center">

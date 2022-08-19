@@ -1,8 +1,3 @@
-import {
-  getPostByIssueId,
-  getPostIds,
-  getSinglePost,
-} from "../../utils/github";
 import matter from "gray-matter";
 import Link from "next/link";
 import { renderToHTML, slugify } from "../../utils/string";
@@ -72,7 +67,6 @@ export async function getStaticProps({ params }: BlogPostParams) {
 export async function getStaticPaths() {
   const posts = await getAllPostSlugs();
   const paths = posts.map((issueId) => `/articles/${slugify(issueId)}`);
-  console.log(paths);
 
   return {
     paths,
